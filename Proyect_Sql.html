@@ -1,0 +1,495 @@
+<html lang="en">
+
+<head>
+    <title>Conocimientos en sql</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Oswald:wght@300&display=swap"
+        rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+
+
+    <!ajusta el tamaño de visualicacion->
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+            integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+            crossorigin="anonymous" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/iconos.css" />
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar navbar-dark bg-dark">
+         
+            <ul class="nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Certificados.html">Cursos y Certificados</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Conocimiento.html">Conocimientos</a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <div class="cover d-flex justify-content-end align-items-start Flex-column p-5"
+            style="background-image: url(img/img_port.jpg);">
+            <h1>
+                Edwin Roberto Reyes Martinez
+            </h1>
+            <p>
+                Desarrollador Jr.
+            </p>
+        </div>
+    </header>
+
+    <section>
+        <div class="container mt-5 mb-5">
+            <div class="row justify-content-center">
+
+                <h4 class="flex-shrink-1 me-4">
+                    Base de datos de un Aeropueto (basica)
+                </h4>
+
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+
+                            <div title="resultado del codigo" class="cover3 mt-3"
+                                style="background-image: url(img/img_proy/img_sql/proy_1.jpg);">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-10 col-lg-12 mt-5">
+
+                            <pre>
+                                <code>
+CREATE DATABASE  Aeropuerto 
+USE  Aeropuerto
+--Creacion de tabla 
+CREATE TABLE aeronave(matricula varchar(15)primary key not null, 
+modelo varchar (10),
+aerolinea varchar (15),
+capacidad real,
+nacionalidad varchar (10))
+--Creacion de tabla
+CREATE TABLE Transporte(id_transporte varchar(10) primary key not null,
+nombre_del_transporte varchar (10),
+tipo_de_transporte real, 
+compania varchar (25),
+Nombre_responsable varchar (10))
+CREATE TABLE Lugar(id_transporte varchar(10) primary key not null,
+Costo varchar (10),
+tipo_de_viaje real, 
+reservacion varchar (25))
+
+INSERT INTO aeronave
+VALUES('201453','elicoptero','volaris','80','mexicana')
+
+INSERT INTO Transporte
+VALUES('674677','vuelosni','3','volaris','Juan')
+
+INSERT INTO Lugar
+VALUES('674677','$4500,00','1','Si')
+
+
+SELECT * FROM aeronave;
+SELECT * FROM Transporte;
+SELECT * FROM Lugar;
+
+                                </code>
+                            </pre>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container mt-5 mb-5">
+            <div class="row justify-content-center">
+
+                <h4 class="flex-shrink-1 me-4">
+                    Base de datos de un Restaurante (basica)
+                </h4>
+
+                <div class="col-md-7">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+
+                            <div title="resultado del codigo" class="cover3 mt-3"
+                                style="background-image: url(img/img_proy/img_sql/proy_2.jpg);">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-10 col-lg-12 mt-5">
+
+                            <pre>
+                                <code>
+CREATE DATABASE Restaurante
+USE Restaurante
+
+create table Empleados(id_empleado varchar (15) primary key not null,
+apellidos_paterno varchar (15),
+apellido_materno varchar(15),
+nombre varchar (15),
+bonos_de_productividad varchar(10),
+jornada int)
+
+create table reservaciones(id_reservante varchar (15) primary key not null,
+apellidos_paterno varchar (15),
+apellido_materno varchar(15),
+nombre varchar (15),
+id_banco varchar(15))
+
+create table Menu(mens int primary key not null,
+Postres varchar(15),
+Entradas varchar(15),
+Platillo_principal varchar (25))
+
+INSERT INTO Empleados
+VALUES('201453','Rodrigo','Salazar','Oscar','+15%',2)
+
+INSERT INTO reservaciones
+VALUES('674677','Perez','Estrada','Pedro','657657')
+
+INSERT INTO Menu
+VALUES('546','Tcheesecake','Palta reina','merluza al horno')
+
+SELECT * FROM Empleados;
+SELECT * FROM reservaciones;
+SELECT * FROM Menu;
+
+                                </code>
+                            </pre>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container mt-5 mb-5">
+            <div class="row justify-content-center">
+
+                <h4 class="flex-shrink-1 me-4">
+                    Base de datos de un Almacen en un centro comercial (basica)
+                </h4>
+
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+
+                            <div title="resultado del codigo" class="cover2 mt-3"
+                                style="background-image: url(img/img_proy/img_sql/proy_3.jpg);">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+
+                            <div title="resultado del codigo" class="cover4 mt-3"
+                                style="background-image: url(img/img_proy/img_sql/proy_3_1.jpg);">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-10 col-lg-12 mt-5">
+
+                            <pre>
+                                <code>
+create database comercial_almacen
+use comercial_almacen
+
+create table Producto(id_producto int primary key not null,
+nombre_producto varchar(20),
+precio_venta money,
+precio_compra money,
+cantidad int)
+
+create table Proveedor(id_proveedor int primary key not null,
+nombre_proveedor varchar(20))
+
+
+create table Pedido(id_pedido int primary key not null,
+precio_venta money)
+
+create table Ventas(id_venta int primary key not null,
+folio_factura int,
+total_ventas money)
+
+insert into Producto
+values(1323,'Refresco',15.00,10.00,20)
+
+insert into Proveedor
+values(2187,'Femsa')
+
+insert into Pedido
+values(56546,126.00)
+insert into Pedido
+values(53646,121.00)
+insert into Pedido
+values(56046,102.00)
+insert into Pedido
+values(55646,125.00)
+
+insert into Ventas
+values(875323,1896,867.00)
+insert into Ventas
+values(87532,5896,6342.00)
+insert into Ventas
+values(87523,178896,231.00)
+insert into Ventas
+values(87323,10896,342.00)
+
+select*from Producto
+
+select*from Proveedor
+
+select*from Pedido
+
+select*from Ventas
+
+                                </code>
+                            </pre>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container mt-5 mb-5">
+            <div class="row justify-content-center">
+
+                <h4 class="flex-shrink-1 me-4">
+                    Base de datos de un Almacen en un centro comercial (Modificacion a registros y funciones agregadas)
+                </h4>
+
+                <div class="col-md-7">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+
+                            <div title="resultado del codigo" class="cover3 mt-3"
+                                style="background-image: url(img/img_proy/img_sql/proy_4.jpg);">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-10 col-lg-12 mt-5">
+
+                            <pre>
+                                <code>
+/*modificacion de registros en la  base de datos */
+
+Update Producto set precio_venta=(precio_venta * 0.5) + precio_venta
+Update producto set cantidad=cantidad + 25 where id_producto=1323
+
+Update Producto set precio_venta=(((20*precio_venta)/100)+ precio_venta)/*20% + a precio de venta*/
+
+Update Producto set precio_compra=((((10*precio_compra)/100)- precio_compra))/*10% - a precio de compra*/
+
+
+
+Update Pedido set precio_venta=(((15*precio_venta)/100))/*15%  a precio de venta*/
+
+/*fin de modificacion de registros en la  base de datos */
+
+/*inicio de funciones agregadas en la  base de datos */
+
+select max(cantidad) as [valor máximo] from Pedido
+select min(cantidad) as [valor mínimo] from Pedido
+select avg(cantidad) as [valor promedio] from Pedido
+select count(cantidad) as [total registros] from Pedido
+select sum(cantidad) as [total de la suma] from Pedido
+
+select (min(cantidad) as [valor mínimo]+ min(precio_compra) as [valor mínimo])as [totales mínimo] from Pedido
+select (max(cantidad) as [valor maximo]+ max(precio_compra) as [valor maximo])as [totales maximos] from Pedido
+select avg(precio_compra) as [valor promedio de precio compra] from Pedido
+select count(folio_factura) as [total registros] from Ventas
+select (sum(precio_compra) as [Precio de compra] * sum(total-ventas) as [total de ventas])as [total]  from Pedido,from Ventas
+select (min(precio_compra) as [Precio de compra] - min(total-ventas) as [total de ventas])  from Pedido,from Ventas
+select count(cantidad) as [total registros] from Pedido
+
+/*fin de funciones agregadas en la  base de datos */
+
+
+                                </code>
+                            </pre>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container mt-5 mb-5">
+            <div class="row justify-content-center">
+
+                <h4 class="flex-shrink-1 me-4">
+                    Base de datos con conexion a java (registro de ventas)
+                </h4>
+
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+
+                            <div title="resultado del codigo" class="cover3 mt-3"
+                                style="background-image: url(img/img_proy/img_sql/proy_5.jpg);">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+
+                            <div title="resultado del codigo" class="cover3 mt-3"
+                                style="background-image: url(img/img_proy/img_sql/proy_5_1.jpg);">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+
+                            <div title="resultado del codigo" class="cover4 mt-3"
+                                style="background-image: url(img/img_proy/img_sql/proy_5_2.jpg);">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-10 col-lg-12 mt-5">
+
+                            <pre>
+                                <code>
+create database Ventas
+go
+use Ventas
+go
+create table Productos(
+idproducto int identity primary key,
+descripcion varchar(80) not null,
+cantidad int check(cantidad>=0),
+precio float check(precio >=1.0))
+go
+create table Ventas(
+idVenta int identity primary key,
+idproducto int  foreign key references Productos(idproducto),
+cantidad int check(cantidad >=0),
+precio float check(precio >=1.0),
+fechacompra date)
+go
+create procedure AltaVenta
+@producto varchar(80),
+@cantidad int,
+@respuesta varchar(30) output
+as
+declare @idproducto int,@precio float
+select @idproducto=idproducto,@precio=precio from Productos where descripcion=@producto
+insert into Ventas(idproducto,cantidad,precio,fechacompra) values (@idproducto,@cantidad,@precio,GETDATE())
+set @respuesta='Venta almacenada'
+go
+create trigger ActualizaExistencia
+on ventas
+for insert
+as
+declare @cantidad int
+select @cantidad=cantidad from inserted
+update productos set cantidad=cantidad-@cantidad
+go
+
+insert into Productos(descripcion,cantidad,precio) values ('Gansito',30,10)
+insert into Productos(descripcion,cantidad,precio) values ('pinguinos',20,12)
+insert into Productos(descripcion,cantidad,precio) values ('Sabrita',40,15)
+insert into Productos(descripcion,cantidad,precio) values ('Galletas Emperador chocolate',15,17.50)
+insert into Productos(descripcion,cantidad,precio) values ('Pepsi 600',40,12.50)
+
+select descripcion from productos order by descripcion
+
+
+                                </code>
+                            </pre>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <footer class="bg-dark text-center text-white" id="comienza">
+
+            <div class="container p-4">
+
+                <section class="mb-5 mt-5">
+                    <h4>
+                        Gracias por revisar mi pagina web
+                    </h4>
+                    <p class="mt-4">
+                        puedes contactarme enviando un mensaje a: edwinrob978@gmail.com
+                    </p>
+                    <p>
+                        o llama a mi numero: 5549381846
+                    </p>
+                </section>
+
+                <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+
+                    <a class="text-white" href="https://mdbootstrap.com/"> </a>
+                </div>
+        </footer>
+    </section>
+
+</body>
+
+</html>

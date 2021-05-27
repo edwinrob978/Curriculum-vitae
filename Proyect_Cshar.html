@@ -1,0 +1,799 @@
+<html lang="en">
+
+<head>
+    <title>Conocimientos en c#</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Oswald:wght@300&display=swap"
+        rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+
+
+    <!ajusta el tamaño de visualicacion->
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+            integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+            crossorigin="anonymous" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/iconos.css" />
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar navbar-dark bg-dark">
+
+            <ul class="nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Certificados.html">Cursos y Certificados</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Conocimiento.html">Conocimientos</a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <div class="cover d-flex justify-content-end align-items-start Flex-column p-5"
+            style="background-image: url(img/img_port.jpg);">
+            <h1>
+                Edwin Roberto Reyes Martinez
+            </h1>
+            <p>
+                Desarrollador Jr.
+            </p>
+        </div>
+    </header>
+
+    <section>
+        <div class="container mt-5 mb-5">
+            <div class="row justify-content-center">
+
+                <h4 class="flex-shrink-1 me-4">
+                    Separador de vocales y consonantes
+                </h4>
+
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+
+                            <div title="resultado del codigo" class="cover2 mt-3"
+                                style="background-image: url(img/img_proy/img_cshar/proy_1.jpg);">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+
+                            <div title="resultado del codigo" class="cover2 mt-3"
+                                style="background-image: url(img/img_proy/img_cshar/proy_1_1.jpg);">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+
+                            <div title="resultado del codigo" class="cover2 mt-3"
+                                style="background-image: url(img/img_proy/img_cshar/proy_1_2.jpg);">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-10 col-lg-12 mt-5">
+
+                            <pre>
+                                <code>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+namespace Archivos
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            try {
+                TextReader lee = new StreamReader("Prueba.txt");
+                string datos = lee.ReadToEnd();
+                lee.Close();
+                TextWriter vocales;
+                vocales = new StreamWriter("Vocales.txt");
+                TextWriter consonantes;
+                consonantes = new StreamWriter("Consonantes.txt");
+                TextWriter union;
+                union = new StreamWriter("Unir.txt");
+
+                vocales.WriteLine(DejaVocal(datos).ToString());
+                vocales.Close();
+
+                consonantes.WriteLine(DejaConsonantes(datos).ToString());
+                consonantes.Close();
+
+                Console.WriteLine("Proceso Finalizado ....");
+                Console.ReadKey();
+
+                TextReader v = new StreamReader("Vocales.txt");
+                TextReader c = new StreamReader("Consonantes.txt");
+
+                String datos1 = v.ReadToEnd();
+                String datos2 = c.ReadToEnd();
+
+                v.Close();
+                c.Close();
+
+                union.WriteLine(UneDatos(datos1,datos2).ToString());
+                union.Close();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public static string DejaVocal(string cadena)
+        {
+            char[] datos = cadena.ToCharArray();
+            string vocales = "";
+            foreach (char v in datos)
+            {
+                if(v.ToString().ToLower().Equals("a") || v.ToString().ToLower().Equals("e") || v.ToString().ToLower().Equals("i") || v.ToString().ToLower().Equals("o") || v.ToString().ToLower().Equals("u"))
+                {
+                    vocales += v;
+                }
+                else
+                {
+                    vocales += " ";
+                }
+            }
+            return vocales; 
+        }
+
+        public static string DejaConsonantes(string cadena)
+        {
+            char[] datos = cadena.ToCharArray();
+            string consonantes = "";
+            foreach (char c in datos)
+            {
+                if (!c.ToString().ToLower().Equals("a") && !c.ToString().ToLower().Equals("e") && !c.ToString().ToLower().Equals("i") && !c.ToString().ToLower().Equals("o") && !c.ToString().ToLower().Equals("u"))
+                {
+                    consonantes += c;
+                } 
+                else
+                {
+                    consonantes += " ";
+                }
+            }
+            return consonantes;
+        }
+
+        public static string UneDatos(string cad1, string cad2)
+        {
+            char[] datos1 = cad1.ToCharArray();
+            char[] datos2 = cad2.ToCharArray();
+            string todo = "";
+            int i = 0;
+
+            foreach (char caracteres in datos1)
+            {
+                if (!caracteres.ToString().Equals(" "))
+                {
+                    todo += caracteres;
+                    i++;
+                }
+                else
+                {
+                    todo += datos2[i];
+                    i++;
+                }
+            }
+            return todo;
+        }
+    }
+}
+                                </code>
+                            </pre>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container mt-5 mb-5">
+            <div class="row justify-content-center">
+
+                <h4 class="flex-shrink-1 me-4">
+                    Programa agregado de filtro en imagenes
+                </h4>
+
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+
+                            <div title="resultado del codigo" class="cover4 mt-3"
+                                style="background-image: url(img/img_proy/img_cshar/proy_2.jpg);">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+
+                            <div title="resultado del codigo" class="cover4 mt-3"
+                                style="background-image: url(img/img_proy/img_cshar/proy_2_1.jpg);">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-10 col-lg-12 mt-5">
+
+                            <pre>
+                                <code>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Filtros
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    string img = openFileDialog1.FileName;
+                    pictureBox1.Image = Image.FromFile(img);
+                    Bitmap bmp = new Bitmap(img);
+                    bmp.Save("C://Users/Edwin/Desktop/foto.jpeg");
+                    int alto = bmp.Height;
+                    int ancho = bmp.Width;
+                    Bitmap img1 = new Bitmap(bmp);
+                    Bitmap img2 = new Bitmap(bmp);
+                    Bitmap img3 = new Bitmap(bmp);
+                    Bitmap img4 = new Bitmap(bmp);
+                    Bitmap img5 = new Bitmap(bmp);
+                    Bitmap img6 = new Bitmap(bmp);
+                    Bitmap img7 = new Bitmap(bmp);
+                    Bitmap img8 = new Bitmap(bmp);
+                    Bitmap img9 = new Bitmap(bmp);
+                    Bitmap img10 = new Bitmap(bmp);
+                    Bitmap img11 = new Bitmap(bmp);
+                    Bitmap img12 = new Bitmap(bmp);
+                    Bitmap img13 = new Bitmap(bmp);
+                    Bitmap img14 = new Bitmap(bmp);
+                    Bitmap img15 = new Bitmap(bmp);
+                    Bitmap img16 = new Bitmap(bmp);
+                    Bitmap img17 = new Bitmap(bmp);
+                    Bitmap img18 = new Bitmap(bmp);
+                    Bitmap img19 = new Bitmap(bmp);
+                    Bitmap img20 = new Bitmap(bmp);
+                    Bitmap img21 = new Bitmap(bmp);
+
+                    for (int y = 0; y < alto; y++)
+                    {
+                        for (int x = 0; x < ancho; x++)
+                        {
+                            Color p = bmp.GetPixel(x, y);
+                            int a = p.A;
+                            int r = p.R;
+                            int g = p.G;
+                            int b = p.B;
+
+                            img1.SetPixel(x, y, Color.FromArgb(a, r, 0, 0));
+                            img2.SetPixel(x, y, Color.FromArgb(a, 0, g, 0));
+                            img3.SetPixel(x, y, Color.FromArgb(a, 0, 0, b));
+
+                            img4.SetPixel(x, y, Color.FromArgb(a, r, 255, 0));
+                            img5.SetPixel(x, y, Color.FromArgb(a, r, 0, 255));
+                            img6.SetPixel(x, y, Color.FromArgb(a, r, 255, 255));
+
+                            img7.SetPixel(x, y, Color.FromArgb(a, 0, g, 255));
+                            img8.SetPixel(x, y, Color.FromArgb(a, 255, g, 0));
+                            img9.SetPixel(x, y, Color.FromArgb(a, 255, g, 255));
+
+                            img10.SetPixel(x, y, Color.FromArgb(a, 0, 255, b));
+                            img11.SetPixel(x, y, Color.FromArgb(a, 255, 0, b));
+                            img12.SetPixel(x, y, Color.FromArgb(a, 255, 255, b));
+
+                            img13.SetPixel(x, y, Color.FromArgb(a, r, g, 0));
+                            img14.SetPixel(x, y, Color.FromArgb(a, 0, g, b));
+                            img15.SetPixel(x, y, Color.FromArgb(a, r, 0, b));
+
+                            img16.SetPixel(x, y, Color.FromArgb(a, r, g, 255));
+                            img17.SetPixel(x, y, Color.FromArgb(a, 255, g, b));
+                            img18.SetPixel(x, y, Color.FromArgb(a, r, 255, b));
+
+                            img19.SetPixel(x, y, Color.FromArgb(a, r, r, r));
+                            img20.SetPixel(x, y, Color.FromArgb(a, g, g, g));
+                            img21.SetPixel(x, y, Color.FromArgb(a, b, b, b));
+                        }
+                    }
+                    
+                    pictureBox1.Image = img1;
+                    //img1.Save("C://Users/Edwin/Desktop/img1.jpeg");
+                    pictureBox2.Image = img2;
+                    //img2.Save("C://Users/Edwin/Desktop/img2.jpeg");
+                    pictureBox3.Image = img3;
+                    //img3.Save("C://Users/Edwin/Desktop/img3.jpeg");
+                    pictureBox4.Image = img4;
+                    //img4.Save("C://Users/Edwin/Desktop/img4.jpeg");
+                    pictureBox5.Image = img5;
+                    //img5.Save("C://Users/Edwin/Desktop/img5.jpeg");
+                    pictureBox6.Image = img6;
+                    //img6.Save("C://Users/Edwin/Desktop/img6.jpeg");
+                    pictureBox7.Image = img7;
+                    //img7.Save("C://Users/Edwin/Desktop/img7.jpeg");
+                    pictureBox8.Image = img8;
+                    //img8.Save("C://Users/Edwin/Desktop/img8.jpeg");
+                    pictureBox9.Image = img9;
+                    //img9.Save("C://Users/Edwin/Desktop/img9.jpeg");
+                    pictureBox10.Image = img10;
+                    //img10.Save("C://Users/Edwin/Desktop/img10.jpeg");
+                    pictureBox11.Image = img11;
+                    //img11.Save("C://Users/Edwin/Desktop/img11.jpeg");
+                    pictureBox12.Image = img12;
+                    //img12.Save("C://Users/Edwin/Desktop/img12.jpeg");
+                    pictureBox13.Image = img13;
+                    //img13.Save("C://Users/Edwin/Desktop/img13.jpeg");
+                    pictureBox14.Image = img14;
+                    //img14.Save("C://Users/Edwin/Desktop/img14.jpeg");
+                    pictureBox15.Image = img15;
+                    //img15.Save("C://Users/Edwin/Desktop/img15.jpeg");
+                    pictureBox16.Image = img16;
+                    //img16.Save("C://Users/Edwin/Desktop/img16.jpeg");
+                    pictureBox17.Image = img17;
+                    //img17.Save("C://Users/Edwin/Desktop/img17.jpeg");
+                    pictureBox18.Image = img18;
+                    //img18.Save("C://Users/Edwin/Desktop/img18.jpeg");
+                    pictureBox19.Image = img19;
+                    //img19.Save("C://Users/Edwin/Desktop/img19.jpeg");
+                    pictureBox20.Image = img20;
+                    //img20.Save("C://Users/Edwin/Desktop/img20.jpeg");
+                    pictureBox21.Image = img21;
+                   // img21.Save("C://Users/Edwin/Desktop/img21.jpeg");
+                    
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("EL archivo selecionado no es un tipo de imagen valido");
+            }
+        }
+
+      
+    }
+}
+                                </code>
+                            </pre>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container mt-5 mb-5">
+            <div class="row justify-content-center">
+
+                <h4 class="flex-shrink-1 me-4">
+                    Programa uso de hilos
+                </h4>
+
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+
+                            <div title="resultado del codigo" class="cover3 mt-3"
+                                style="background-image: url(img/img_proy/img_cshar/proy_3.jpg);">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+
+                            <div title="resultado del codigo" class="cover3 mt-3"
+                                style="background-image: url(img/img_proy/img_cshar/proy_3_1.jpg);">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+
+                            <div title="resultado del codigo" class="cover3 mt-3"
+                                style="background-image: url(img/img_proy/img_cshar/proy_3_2.jpg);">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-10 col-lg-12 mt-5">
+
+                            <pre>
+                                <code>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Threading;
+
+namespace Hilos_carreras
+{
+    public partial class Form1 : Form
+    {
+        delegate void dele(ProgressBar pb, int lat, int vel);
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //ejecucion de varios hilos 
+            CheckForIllegalCrossThreadCalls = false;
+
+
+        }
+
+        private void Form1_Paint(object sender, PaintEventArgs e)
+        {
+            /*
+            Pen lapiz = new Pen(Color.Blue,1);
+            Graphics pintor = CreateGraphics();
+
+            pintor.DrawLine(lapiz,new Point(12,50),new Point(400,50));
+            pintor.DrawLine(lapiz, new Point(12, 120), new Point(400, 120));
+            pintor.DrawLine(lapiz, new Point(12, 200), new Point(400, 200));
+            */
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            button1.Enabled = false;
+            Thread[] hilos = new Thread[4];
+            for (int i=0; i &lt;hilos.Length; i++)
+            {
+                hilos[i] = new Thread(metodo);
+                hilos[i].Name = "h" + i;
+                hilos[i].Start();
+            }
+            button1.Enabled = true;
+        }
+
+        public void metodo()
+        {
+            dele eldelegadp = new dele(mover);
+            if (Thread.CurrentThread.Name.Equals("h0"))
+            {
+                eldelegadp.Invoke(progressBar1, progressBar1.Location.Y,100);
+            }else if(Thread.CurrentThread.Name.Equals("h1"))
+            {
+                eldelegadp.Invoke(progressBar2, progressBar2.Location.Y, 100);
+            }
+            else if (Thread.CurrentThread.Name.Equals("h2"))
+            {
+                eldelegadp.Invoke(progressBar3, progressBar3.Location.Y, 100);
+            }
+            else if (Thread.CurrentThread.Name.Equals("h3"))
+            {
+                eldelegadp.Invoke(progressBar4, progressBar4.Location.Y, 100);
+            }
+        }
+
+        public void mover(ProgressBar pb, int lat, int velocidad)
+        {
+            for (int i=0; i&lt;101; i++)
+            {
+                pb.Location = new Point(1,lat);
+
+                if (Thread.CurrentThread.Name.Equals("h0"))
+                {
+                    Thread.Sleep(10);
+                    progressBar1.Value = (i);
+                }
+                else if (Thread.CurrentThread.Name.Equals("h1"))
+                {
+                    Thread.Sleep(10);
+                    progressBar2.Value = (i);
+                }
+                else if (Thread.CurrentThread.Name.Equals("h2"))
+                {
+                    Thread.Sleep(10);
+                    progressBar3.Value = (i);
+                }
+                else if (Thread.CurrentThread.Name.Equals("h3"))
+                {
+                    Thread.Sleep(10);
+                    progressBar4.Value = (i);
+                }
+            }
+        }
+
+    }
+}
+                                </code>
+                            </pre>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container mt-5 mb-5">
+            <div class="row justify-content-center">
+
+                <h4 class="flex-shrink-1 me-4">
+                    Programa reproductor de videos (basico)
+                </h4>
+
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+
+                            <div title="resultado del codigo" class="cover3 mt-3"
+                                style="background-image: url(img/img_proy/img_cshar/proy_4.jpg);">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+
+                            <div title="resultado del codigo" class="cover3 mt-3"
+                                style="background-image: url(img/img_proy/img_cshar/proy_4_1.jpg);">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+
+                            <div title="resultado del codigo" class="cover3 mt-3"
+                                style="background-image: url(img/img_proy/img_cshar/proy_4_2.jpg);">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-10 col-lg-12 mt-5">
+
+                            <pre>
+                                <code>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Threading;
+
+
+
+namespace Reproductor
+{
+    public partial class Form1 : Form
+    {
+        
+        OpenFileDialog Abrir = new OpenFileDialog();
+
+        int tiempo;
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+       
+
+        private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Abrir.Title = "Buscar Archivo";
+            Abrir.FilterIndex = 1;
+
+            try
+            {
+                if (Abrir.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    axWindowsMediaPlayer1.URL = Abrir.FileName;
+                    label1.Text = Abrir.FileName;
+                }
+
+            }
+            catch (Exception)
+            {
+                return;
+            }
+           
+            
+            timer1.Interval = 1000;
+            timer1.Start();           
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+            progressBar1.Maximum = Convert.ToInt32(axWindowsMediaPlayer1.currentMedia.duration); // tiempo total del video 
+            int actual = Convert.ToInt32(axWindowsMediaPlayer1.Ctlcontrols.currentPosition); //tiempo actual del video
+
+            tiempo = progressBar1.Maximum;
+            
+
+             if (actual < progressBar1.Maximum)
+             {
+                for (int i = 0; i <= actual; i++)
+                {
+                    
+                    progressBar1.Value = Convert.ToInt32(axWindowsMediaPlayer1.Ctlcontrols.currentPosition);
+
+                }
+               
+             }
+            else
+            {
+                timer1.Stop();
+            }
+             
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            axWindowsMediaPlayer1.URL = Abrir.FileName;
+            axWindowsMediaPlayer1.Ctlcontrols.play();
+
+            timer1.Interval = 1000;
+            timer1.Start();
+        }
+
+       
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            axWindowsMediaPlayer1.URL = Abrir.FileName;
+            axWindowsMediaPlayer1.Ctlcontrols.pause();
+
+            timer1.Interval = 1000;
+            timer1.Start();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            axWindowsMediaPlayer1.URL = Abrir.FileName;
+            axWindowsMediaPlayer1.Ctlcontrols.stop();
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            axWindowsMediaPlayer1.URL = Abrir.FileName;
+            axWindowsMediaPlayer1.Ctlcontrols.next();
+
+            timer1.Interval = 1000;
+            timer1.Start();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+ 
+    }
+}
+                                </code>
+                            </pre>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <footer class="bg-dark text-center text-white" id="comienza">
+
+            <div class="container p-4">
+
+                <section class="mb-5 mt-5">
+                    <h4>
+                        Gracias por revisar mi pagina web
+                    </h4>
+                    <p class="mt-4">
+                        puedes contactarme enviando un mensaje a: edwinrob978@gmail.com
+                    </p>
+                    <p>
+                        o llama a mi numero: 5549381846
+                    </p>
+                </section>
+
+                <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+
+                    <a class="text-white" href="https://mdbootstrap.com/"> </a>
+                </div>
+        </footer>
+    </section>
+
+</body>
+
+</html>

@@ -1,0 +1,703 @@
+<html lang="en">
+
+<head>
+    <title>Conocimientos en c++</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Oswald:wght@300&display=swap"
+        rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+
+
+    <!ajusta el tamaño de visualicacion->
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+            integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+            crossorigin="anonymous" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/iconos.css" />
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar navbar-dark bg-dark">
+      
+            <ul class="nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Certificados.html">Cursos y Certificados</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Conocimiento.html">Conocimientos</a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <div class="cover d-flex justify-content-end align-items-start Flex-column p-5"
+            style="background-image: url(img/img_port.jpg);">
+            <h1>
+                Edwin Roberto Reyes Martinez
+            </h1>
+            <p>
+                Desarrollador Jr.
+            </p>
+        </div>
+    </header>
+
+    <section>
+        <div class="container mt-5 mb-5">
+            <div class="row justify-content-center">
+
+                <h4 class="flex-shrink-1 me-4">
+                    Programa en shell de cuadrado medios (simulacion)
+                </h4>
+
+                <div class="col-md-7">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+
+                            <div title="resultado del codigo" class="cover3 mt-3"
+                                style="background-image: url(img/img_proy/img_cplus/proy_1.jpg);">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-10 col-lg-12 mt-5">
+
+                            <pre>
+                                <code>
+//
+//  main.cpp
+//  cuadrados medios
+//
+//  Copyright © 2019 edwin reyes. All rights reserved.
+//
+
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;sstream&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;fstream&gt;
+
+using namespace std;
+
+string itoa(int n)
+{
+    string rtn;
+    bool neg=false;
+    
+    
+    if(n&lt;0)
+    {
+        neg=true;
+        n=-n;
+    }
+    
+    if(n==0)
+        return 0;
+    
+    for(rtn="";n>0;rtn.insert(rtn.begin(),n%10+'0'),n/=10);
+    
+    if(neg)
+        rtn.insert(rtn.begin(),'-');
+    return rtn;
+}
+
+int main()
+{
+    int semilla1,semilla2,semilla3,ncalcular,x=3,r=1,longitud;
+    string semi,semillalong,semillaajust;
+    fstream archivo("registro.txt");
+    
+    cout&lt;&lt;"METODO CUADRADOS MEDIOS"&lt;&lt;endl;
+    cout&lt;&lt;"Cuantos numeros pseudoaleatorios deses obtener";
+    cin&gt;&gt;ncalcular;
+    cout&lt;&lt;"Introdusca semilla 1 =>";
+    cin&gt;&gt;semilla1;
+    semi=itoa(semilla1);
+    longitud=semi.length();
+    archivo.open("registro.txt",ios::out);
+    if(longitud==4)
+    {
+        
+            cout&lt;&lt;endl&lt;&lt;endl&lt;&lt;"resultados;"&lt;&lt;endl&lt;&lt;endl;
+        
+            for (int i=0; i&lt;ncalcular; i++) {
+                semilla2=semilla1*semilla1;
+                string semilla;
+                semilla=itoa(semilla2);
+                longitud=semilla.length();
+                if(longitud&lt;8){
+                   
+                    semilla="0"+semilla;
+                    semillaajust=semilla;
+                    string sem;
+                    sem=semilla.substr(2,4);
+                    semilla2=atoi(sem.c_str());
+                    //cout&lt;&lt;"y"&lt;&lt;i&lt;&lt;"("&lt;&lt;semilla1&lt;&lt;")"&lt;&lt;"^2""="&lt;&lt;semillaajust;
+                    //cout&lt;&lt;"\t\tX"&lt;&lt;x++<<"="&lt;&lt;semilla2;
+                    //cout&lt;&lt;"\t\tr"&lt;&lt;r++&lt;&lt;"="&lt;&lt;"0."&lt;&lt;sem&lt;&lt;endl;
+                    cout&lt;&lt;"0."&lt;&lt;sem&lt;&lt;endl;
+                    semilla1=semilla2;
+                    archivo&lt;&lt;"0."&lt;&lt;sem&lt;&lt;endl;
+                }
+                else{
+                    
+                    semillaajust=semilla;
+                    string sem;
+                    sem=semilla.substr(2,4);
+                    semilla2=atoi(sem.c_str());
+                    //cout&lt;&lt;"y"&lt;&lt;i&lt;&lt;"("&lt;&lt;semilla1&lt;&lt;")"&lt;&lt;"^2""="&lt;&lt;semillaajust;
+                    //cout&lt;&lt;"\t\tX"&lt;&lt;x++&lt;&lt;"="&lt;&lt;semilla2;
+                    //cout&lt;&lt;"\t\tr"&lt;&lt;r++&lt;&lt;"="&lt;&lt;"0."&lt;&lt;sem&lt;&lt;endl;
+                    cout&lt;&lt;"0."&lt;&lt;sem&lt;&lt;endl;
+                    semilla1=semilla2;
+                    archivo&lt;&lt;"0."&lt;&lt;sem&lt;&lt;endl;
+                   
+                    
+                }
+               archivo.close();
+            }
+        
+        
+        
+    }
+   
+    
+        else{
+            cout&lt;&lt;"Introcudir un numero de 4 cifras"&lt;&lt;endl;
+            
+        }
+    
+        return 0;
+    }
+                                </code>
+                            </pre>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container mt-5 mb-5">
+            <div class="row justify-content-center">
+
+                <h4 class="flex-shrink-1 me-4">
+                    Programa en shell de multiplicador constante (simulacion)
+                </h4>
+
+                <div class="col-md-7">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+
+                            <div title="resultado del codigo" class="cover4 mt-3"
+                                style="background-image: url(img/img_proy/img_cplus/proy_2.jpg);">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-10 col-lg-12 mt-5">
+
+                            <pre>
+                                <code>
+//
+//  main.cpp
+//  multiplicador_constante
+//
+//  Copyright © 2019 edwin reyes. All rights reserved.
+//
+
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;sstream&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;fstream&gt;
+
+using namespace std;
+
+string itoa(int n)
+{
+    string rtn;
+    bool neg=false;
+    
+    
+    if(n&lt;0)
+    {
+        neg=true;
+        n=-n;
+    }
+    
+    if(n==0)
+        return 0;
+    
+    for(rtn="";n&gt;0;rtn.insert(rtn.begin(),n%10+'0'),n/=10);
+    
+    if(neg)
+        rtn.insert(rtn.begin(),'-');
+    return rtn;
+}
+
+int main()
+{
+    int semilla1,a,semilla3,ncalcular,x=3,r=1,longitud;
+    string semi,semillalong,semillaajust;
+    fstream archivo("registro.txt");
+    
+    cout&lt;&lt;"MUTIPLICADOR CONSTANTE"&lt;&lt;endl;
+    cout&lt;&lt;"Cuantos numeros pseudoaleatorios deses obtener: ";
+    cin&gt;&gt;ncalcular;
+    cout&lt;&lt;"Introdusca semilla 1 =&gt;";
+    cin&gt;&gt;semilla1;
+    cout&lt;&lt;"Introdusca la constante =&gt;";
+    cin&gt;&gt;a;
+    semi=itoa(semilla1);
+    longitud=semi.length();
+   
+    if(longitud==4)
+    {
+        
+        cout&lt;&lt;endl&lt;&lt;endl&lt;&lt;"resultados;"&lt;&lt;endl&lt;&lt;endl;
+        
+        for (int i=0; i&lt;ncalcular; i++) {
+            archivo.open("registro.txt",ios::out);
+            semilla3=semilla1*a;
+            string semilla;
+            semilla=itoa(semilla3);
+            longitud=semilla.length();
+            if(longitud&lt;8){
+                
+                semilla="0"+semilla;
+                semillaajust=semilla;
+                string sem;
+                sem=semilla.substr(2,4);
+                semilla3=atoi(sem.c_str());
+                //cout&lt;&lt;"y"&lt;&lt;i&lt;&lt;"("&lt;&lt;a&lt;&lt;"*"&lt;&lt;semilla1&lt;&lt;")"&lt;&lt;"="&lt;&lt;semillaajust;
+                //cout&lt;&lt;"\t\tX"&lt;&lt;x++&lt;&lt;"="&lt;&lt;semilla3;
+                //cout&lt;&lt;"\t\tr"&lt;&lt;r++&lt;&lt;"="&lt;&lt;"0."&lt;&lt;sem&lt;&lt;endl;
+                cout&lt;&lt;"0."&lt;&lt;sem&lt;&lt;endl;
+                semilla1=semilla3;
+                archivo&lt;&lt;"0."&lt;&lt;semilla1;
+            }
+            else{
+                
+                semillaajust=semilla;
+                string sem;
+                sem=semilla.substr(2,4);
+                semilla3=atoi(sem.c_str());
+                //cout&lt;&lt;"y"&lt;&lt;i&lt;&lt;"("&lt;&lt;a&lt;&lt;"*"&lt;&lt;semilla1&lt;&lt;")"&lt;&lt;"="&lt;&lt;semillaajust;
+                //cout&lt;&lt;"\t\tX"&lt;&lt;x++&lt;&lt;"="&lt;&lt;semilla3;
+                //cout&lt;&lt;"\t\tr"&lt;&lt;r++&lt;&lt;"="&lt;&lt;"0."&lt;&lt;sem&lt;&lt;endl;
+                cout&lt;&lt;"0."&lt;&lt;sem&lt;&lt;endl;
+                semilla1=semilla3;
+                archivo&lt;&lt;"0."&lt;&lt;semilla1;
+                
+                
+            }
+            archivo.close();
+        }
+        
+        
+        
+    }
+    
+    
+    else{
+        cout&lt;&lt;"Introcudir un numero de 4 cifras"&lt;&lt;endl;
+        
+    }
+    
+    return 0;
+}                              
+                                </code>
+                            </pre>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container mt-5 mb-5">
+            <div class="row justify-content-center">
+
+                <h4 class="flex-shrink-1 me-4">
+                    Programa en shell de distribucion uniforme (simulacion)
+                </h4>
+
+                <div class="col-md-7">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+
+                            <div title="resultado del codigo" class="cover4 mt-3"
+                                style="background-image: url(img/img_proy/img_cplus/proy_3.jpg);">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-10 col-lg-12 mt-5">
+
+                            <pre>
+                                <code>
+//
+//  main.cpp
+//  distribucion uniforme
+//
+//  Created by edwin reyes on 29/08/19.
+//  Copyright © 2019 edwin reyes. All rights reserved.
+//
+
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;sstream&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;fstream&gt;
+
+using namespace std;
+
+string itoa(int n)
+{
+    string rtn;
+    bool neg=false;
+    
+    
+    if(n&lt; 0)
+    {
+        neg=true;
+        n=-n;
+    }
+    
+    if(n==0)
+        return 0;
+    
+    for(rtn="";n>0;rtn.insert(rtn.begin(),n%10+'0'),n/=10);
+    
+    if(neg)
+        rtn.insert(rtn.begin(),'-');
+    return rtn;
+}
+
+int main()
+{
+    int semilla1,semilla2,semilla3,ncalcular,x=3,r=1,longitud;
+    string semi,semillalong,semillaajust;
+    float num,max,min,sem1;
+    fstream archivo("registro.txt");
+    fstream archivo2("registro2.txt");
+    
+    cout&lt;&lt;"METODO DISTRIBUCION UNIFORME"&lt;&lt;endl;
+    cout&lt;&lt;"Cuantos numeros pseudoaleatorios deses obtener";
+    cin&gt;&gt;ncalcular;
+    cout&lt;&lt;"Introdusca semilla 1 =&lt;";
+    cin&gt;&gt;semilla1;
+    cout&lt;&lt;"Introdusca el maximo de ditribucion =&lt;";
+    cin&gt;&gt;max;
+    cout&lt;&lt;"Introdusca el minimo de ditribucion=&lt;";
+    cin&gt;&gt;min;
+    semi=itoa(semilla1);
+    longitud=semi.length();
+    archivo.open("registro.txt",ios::out);
+    archivo2.open("registro2.txt",ios::out);
+    if(longitud==4)
+    {
+        
+        cout&lt;&lt;endl&lt;&lt;endl&lt;&lt;"resultados;"&lt;&lt;endl&lt;&lt;endl;
+        
+        for (int i=0; i&lt;ncalcular; i++) {
+            semilla2=semilla1*semilla1;
+            string semilla;
+            semilla=itoa(semilla2);
+            longitud=semilla.length();
+            if(longitud&lt;8){
+                
+                semilla="0"+semilla;
+                semillaajust=semilla;
+                string sem;
+                sem=semilla.substr(2,4);
+                semilla2=atoi(sem.c_str());
+                //cout&lt;&lt;"y"&lt;&lt;i&lt;&lt;"("&lt;&lt;semilla1&lt;&lt;")"&lt;&lt;"^2""="&lt;&lt;semillaajust;
+                //cout&lt;&lt;"\t\tX"&lt;&lt;x++&lt;&lt;"="&lt;&lt;semilla2;
+                //cout&lt;&lt;"\t\tr"&lt;&lt;r++&lt;&lt;"="&lt;&lt;"0."&lt;&lt;sem&lt;&lt;endl;
+                //cout&lt;&lt;"0."&lt;&lt;sem&lt;&lt;endl;
+                semilla1=semilla2;
+                archivo&lt;&lt;"0."&lt;&lt;sem&lt;&lt;endl;
+                
+                //Generacion de DISTRIBUCION UNIFORME
+                sem1=stof(sem)/10000;
+                num=((min+(max-min))*(sem1));
+                cout&lt;&lt;num&lt;&lt;endl;
+                archivo2&lt;&lt;num&lt;&lt;endl;
+            }
+            else{
+                
+                semillaajust=semilla;
+                string sem;
+                sem=semilla.substr(2,4);
+                semilla2=atoi(sem.c_str());
+                //cout&lt;&lt;"y"&lt;&lt;i&lt;&lt;"("&lt;&lt;semilla1&lt;&lt;")"&lt;&lt;"^2""="&lt;&lt;semillaajust;
+                //cout&lt;&lt;"\t\tX"&lt;&lt;x++&lt;&lt;"="&lt;&lt;semilla2;
+                //cout&lt;&lt;"\t\tr"&lt;&lt;r++&lt;&lt;"="&lt;&lt;"0."&lt;&lt;sem&lt;&lt;endl;
+                //cout&lt;&lt;"0."&lt;&lt;sem&lt;&lt;endl;
+                semilla1=semilla2;
+                archivo&lt;&lt;"0."&lt;&lt;sem&lt;&lt;endl;
+                
+                //Generacion de DISTRIBUCION UNIFORME
+                sem1=stof(sem)/10000;
+                num=((min+(max-min))*(sem1));
+                cout&lt;&lt;num&lt;&lt;endl;
+                archivo2&lt;&lt;num&lt;&lt;endl;
+                
+                
+            }
+            
+        }
+        
+        
+        
+    }
+    
+    
+    else{
+        cout&lt;&lt;"Introcudir un numero de 4 cifras"&lt;&lt;endl;
+        
+    }
+    archivo.close();
+    archivo2.close();
+    return 0;
+}                              
+                                </code>
+                            </pre>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container mt-5 mb-5">
+            <div class="row justify-content-center">
+
+                <h4 class="flex-shrink-1 me-4">
+                    Metodo de ordenamineto (burbuja)
+                </h4>
+
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+
+                            <div title="resultado del codigo" class="cover2 mt-3"
+                                style="background-image: url(img/img_proy/img_cplus/proy_4.jpg);">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-10 col-lg-12 mt-5">
+
+                            <pre>
+                                <code>
+//
+//  burbuja.cpp
+//  
+//
+//  Created by edwin reyes on 06/03/18.
+//
+
+#include &lt;iostream&gt;
+using namespace std;
+
+int main(){
+    int x[5];
+    int i,j,k;
+    
+    for(i=0;i&lt;5;i++){
+        cout&lt;&lt;"ingresa el valor de x["&lt;&lt;i+1&lt;&lt;"]: "; cin&gt;&gt;x[i];
+    }
+    for(i=0;i&lt;5;i=i+1){
+        for(j=0;j&lt;5;j=j+1){
+            if(x[i]&lt;x[j]){
+                k=x[i];
+                x[i]=x[j];
+                x[j]=k;
+            }
+        }
+    }
+    for(i=0;i&lt;5;i++){
+        cout&lt;&lt;x[i]&lt;&lt;endl;
+    }
+    return 0;
+}                
+                                </code>
+                            </pre>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container mt-5 mb-5">
+            <div class="row justify-content-center">
+
+                <h4 class="flex-shrink-1 me-4">
+                    Fila de atencion (simulacion)
+                </h4>
+
+                <div class="col-md-7">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+
+                            <div title="resultado del codigo" class="cover4 mt-3"
+                                style="background-image: url(img/img_proy/img_cplus/proy_5.jpg);">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-10 col-lg-12 mt-5">
+
+                            <pre>
+                                <code>
+#include &lt;stdio.h&gt;
+
+	int tf(int n);
+	int ts(int n);
+	int tc(int n);
+	int tf(int n)
+	{
+		int tf=0;
+		int te=3;
+		tf=(n-1)*(te);
+		return tf;
+	}
+	int ts(int n)
+	{
+		int ts=0;
+		int te=3;
+		ts=(n-1)*(te)+(te);
+		return ts;
+	}
+	int tc(int n)
+	{
+		int tc=0;
+		int te=3;
+		tc=(n)*(te);
+		return tc;
+	}
+	int main()
+	{
+	int opcion,a,c;
+	printf("Menu\n");
+	printf("1.-Calcular el tiempo en la fila del cliente en la posicion (n)\n");
+	printf("2.-Calcular el tiempo que tarda el cliente en el sistema (fila mas su tiempo en caja)\n");
+	printf("3.-Calcular el tiempo que tardara la cajera en atender a los (n) clientes\n");
+	printf("4.-Salir\n");
+	printf("El tiempo que tarda en atender la cajera son 3 minutos\n");
+	printf("Selecciona una opcion(1,2,3,4):");
+	scanf("%d",&opcion);
+	switch(opcion)
+	{
+		case 1:printf("En que posicion esta el cliente?:");
+		scanf("%d",&a);
+		c=tf(a);
+		printf("El tiempo de espera en la fila del cliente %d es:%d minutos\n\n",a,c);
+		return main();
+		break;
+		
+		case 2:printf("En que posicion esta el cliente?:");
+		scanf("%d",&a);
+		c=ts(a);
+		printf("El tiempo que tardara el cliente %d en el sistema es:%d minutos\n\n",a,c);
+		return main();
+		break;
+		
+		case 3:printf("Cuantos clientes estan en la fila?:");
+		scanf("%d",&a);
+		c=tc(a);
+		printf("La cajera tardara: %d minutos en terminar de atender a los %d clientes\n\n",c,a);
+		return main();
+		break;
+		
+		case 4:printf("Adios\n");
+		return 0;
+		break;
+		
+		default:printf("Seleccion Erronea\n\n");
+		return main();
+		}while(opcion !=4);
+}
+
+                                </code>
+                            </pre>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <footer class="bg-dark text-center text-white" id="comienza">
+
+            <div class="container p-4">
+
+                <section class="mb-5 mt-5">
+                    <h4>
+                        Gracias por revisar mi pagina web
+                    </h4>
+                    <p class="mt-4">
+                        puedes contactarme enviando un mensaje a: edwinrob978@gmail.com
+                    </p>
+                    <p>
+                        o llama a mi numero: 5549381846
+                    </p>
+                </section>
+
+                <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+
+                    <a class="text-white" href="https://mdbootstrap.com/"> </a>
+                </div>
+        </footer>
+    </section>
+
+</body>
+
+</html>
